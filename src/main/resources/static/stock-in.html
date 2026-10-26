@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stock-in – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <h1>Stock-in (purchase from supplier)</h1>
+  <div class="card">
+    <div class="grid cols-3">
+      <div class="field"><label>Supplier *</label><select id="supplier"></select></div>
+      <div class="field"><label>Supplier bill no. *</label><input type="text" id="billNo" maxlength="30"></div>
+      <div class="field"><label>Bill date *</label><input type="date" id="billDate"></div>
+    </div>
+    <div class="scan-box">
+      <input type="text" id="scan" placeholder="Scan barcode or type product name, then Enter" autocomplete="off">
+      <div id="results" class="search-results hidden"></div>
+    </div>
+    <div id="scanMsg" class="small" style="margin-top:.4rem"></div>
+  </div>
+  <div class="card table-wrap">
+    <table>
+      <thead><tr><th>Item</th><th class="num">Stock now</th><th class="num">Qty received</th><th class="num">Unit cost ₹</th><th class="num">Value</th><th></th></tr></thead>
+      <tbody id="lines"></tbody>
+      <tfoot><tr><th colspan="2">Total</th><th class="num" id="tQty">0</th><th></th><th class="num" id="tVal">₹0</th><th></th></tr></tfoot>
+    </table>
+    <p class="small muted">Saving adds the stock, records a PURCHASE movement for each line and updates the weighted-average cost.</p>
+    <div id="err"></div>
+    <button class="primary big" id="save" disabled>Save stock-in</button>
+  </div>
+  <div class="card">
+    <h2>Recent stock-in</h2>
+    <table><thead><tr><th>Date</th><th>Supplier</th><th>Bill</th><th class="num">Lines</th><th class="num">Pieces</th><th class="num">Value</th></tr></thead>
+      <tbody id="recent"></tbody></table>
+  </div>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  let lines = [];          // {variant, quantity, unitCost}
+  let results = [], sel = -1;
+
+  requireLogin(['OWNER']).then(async () => {
+    const sups = await api('/suppliers');
+    $('supplier').innerHTML = '<option value="">Choose…</option>' + sups.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join('');
+    $('billDate').value = isoDate(new Date());
+    $('scan').addEventListener('keydown', onKey);
+    $('scan').addEventListener('input', debounce(search, 200));
+    $('save').onclick = save;
+    document.addEventListener('click', e => { if (!e.target.closest('.scan-box')) $('results').classList.add('hidden'); });
+    render();
+    loadRecent();
+  });
+
+  async function onKey(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!results.length) return; e.preventDefault();
+      sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length; draw(); return;
+    }
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const code = $('scan').value.trim();
+    if (sel >= 0 && results[sel]) return add(results[sel]);
+    if (/^\d{6,}$/.test(code)) {
+      try { add(await api('/variants?barcode=' + code)); }
+      catch (err) { $('scanMsg').innerHTML = errorHtml(err); $('scan').select(); }
+    }
+  }
+  async function search() {
+    const q = $('scan').value.trim();
+    if (q.length < 2 || /^\d+$/.test(q)) { $('results').classList.add('hidden'); results = []; sel = -1; return; }
+    results = await api('/variants/search?q=' + encodeURIComponent(q));
+    sel = results.length ? 0 : -1;
+    draw();
+  }
+  function draw() {
+    $('results').innerHTML = results.map((v, i) => `<div data-i="${i}" class="${i === sel ? 'sel' : ''}"><span><b>${esc(v.productName)}</b> ${esc(v.size)} / ${esc(v.colour)} <span class="muted small">${esc(v.sku)}</span></span><span>${stockBadge(v)}</span></div>`).join('') || '<div class="muted">No matching items</div>';
+    $('results').classList.remove('hidden');
+    $('results').querySelectorAll('[data-i]').forEach(d => d.onclick = () => add(results[d.dataset.i]));
+  }
+  function add(v) {
+    $('results').classList.add('hidden'); results = []; sel = -1;
+    $('scan').value = ''; $('scanMsg').innerHTML = '';
+    const l = lines.find(x => x.variant.id === v.id);
+    if (l) l.quantity++; else lines.push({ variant: v, quantity: 1, unitCost: Number(v.costPrice) });
+    render();
+    $('scan').focus();
+  }
+  function render() {
+    $('lines').innerHTML = lines.map((l, i) => `<tr><td><b>${esc(l.variant.productName)}</b> ${esc(l.variant.size)} / ${esc(l.variant.colour)}<div class="small muted">${esc(l.variant.sku)}</div></td>
+      <td class="num">${l.variant.stockQty}</td>
+      <td class="num"><input type="number" min="1" value="${l.quantity}" data-q="${i}" style="width:90px;text-align:right"></td>
+      <td class="num"><input type="number" min="0" step="0.01" value="${l.unitCost}" data-c="${i}" style="width:110px;text-align:right"></td>
+      <td class="num">${rs(l.quantity * l.unitCost)}</td>
+      <td><button class="icon-btn danger" data-rm="${i}">×</button></td></tr>`).join('')
+      || '<tr><td colspan="6" class="cart-empty">Scan the items you received</td></tr>';
+    $('lines').querySelectorAll('[data-q]').forEach(x => x.onchange = () => { lines[x.dataset.q].quantity = Number(x.value); render(); });
+    $('lines').querySelectorAll('[data-c]').forEach(x => x.onchange = () => { lines[x.dataset.c].unitCost = Number(x.value); render(); });
+    $('lines').querySelectorAll('[data-rm]').forEach(x => x.onclick = () => { lines.splice(+x.dataset.rm, 1); render(); });
+    $('tQty').textContent = lines.reduce((s, l) => s + l.quantity, 0);
+    $('tVal').textContent = rs(lines.reduce((s, l) => s + l.quantity * l.unitCost, 0));
+    $('save').disabled = !lines.length;
+  }
+  async function save() {
+    clearMsg($('err'));
+    try {
+      const r = await api('/purchases', { method: 'POST', body: {
+        supplierId: Number($('supplier').value) || null, billNo: $('billNo').value, billDate: $('billDate').value,
+        lines: lines.map(l => ({ variantId: l.variant.id, quantity: l.quantity, unitCost: l.unitCost })) } });
+      toast(`Stock-in saved: ${r.totalPieces} pieces added`, 'ok');
+      lines = []; $('billNo').value = '';
+      render(); loadRecent();
+    } catch (err) { showError($('err'), err); }
+  }
+  async function loadRecent() {
+    const rows = await api('/purchases');
+    $('recent').innerHTML = rows.map(r => `<tr><td>${fmtDate(r.bill_date)}</td><td>${esc(r.supplier)}</td><td>${esc(r.bill_no)}</td>
+      <td class="num">${r.line_count}</td><td class="num">${r.pieces}</td><td class="num">${rs(r.bill_value)}</td></tr>`).join('')
+      || '<tr><td colspan="6" class="muted">No stock-in yet</td></tr>';
+  }
+</script>
+</body>
+</html>

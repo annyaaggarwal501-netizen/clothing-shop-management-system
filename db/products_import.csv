@@ -1,0 +1,275 @@
+product_name,category,brand,hsn_code,tax_class,size,colour,cost_price,selling_price,mrp,opening_stock,barcode
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,S,Blue,578.00,1050.00,1050.00,10,2000000000015
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,S,Pink,578.00,1050.00,1050.00,4,2000000000022
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,M,Blue,578.00,1050.00,1050.00,6,2000000000039
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,M,Pink,578.00,1050.00,1050.00,12,2000000000046
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,L,Blue,578.00,1050.00,1050.00,15,2000000000053
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,L,Pink,578.00,1050.00,1050.00,15,2000000000060
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,XL,Blue,578.00,1050.00,1050.00,6,2000000000077
+Floral Cotton Kurti,Kurtis,Mansi Ethnic,6204,APPAREL,XL,Pink,578.00,1050.00,1050.00,1,2000000000084
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,M,Maroon,494.00,899.00,899.00,8,2000000000091
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,M,Mustard,494.00,899.00,899.00,4,2000000000107
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,L,Maroon,494.00,899.00,899.00,15,2000000000114
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,L,Mustard,494.00,899.00,899.00,3,2000000000121
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,XL,Maroon,494.00,899.00,899.00,15,2000000000138
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,XL,Mustard,494.00,899.00,899.00,10,2000000000145
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,XXL,Maroon,494.00,899.00,899.00,6,2000000000152
+Rayon A-Line Kurti,Kurtis,Aarvi,6204,APPAREL,XXL,Mustard,494.00,899.00,899.00,2,2000000000169
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,S,White,974.00,1499.00,1799.00,4,2000000000176
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,S,Peach,974.00,1499.00,1799.00,10,2000000000183
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,M,White,974.00,1499.00,1799.00,0,2000000000190
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,M,Peach,974.00,1499.00,1799.00,4,2000000000206
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,L,White,974.00,1499.00,1799.00,8,2000000000213
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,L,Peach,974.00,1499.00,1799.00,8,2000000000220
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,XL,White,974.00,1499.00,1799.00,15,2000000000237
+Chikankari Kurti,Kurtis,Lucknowi Craft,6204,APPAREL,XL,Peach,974.00,1499.00,1799.00,1,2000000000244
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,M,Green,1838.00,2625.00,2625.00,8,2000000000251
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,M,Wine,1838.00,2625.00,2625.00,3,2000000000268
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,L,Green,1838.00,2625.00,2625.00,10,2000000000275
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,L,Wine,1838.00,2625.00,2625.00,10,2000000000282
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,XL,Green,1838.00,2625.00,2625.00,15,2000000000299
+Anarkali Kurta with Dupatta,Kurtis,Aarvi,6204,APPAREL,XL,Wine,1838.00,2625.00,2625.00,12,2000000000305
+Designer Party Kurta Set,Kurtis,Mansi Ethnic,6204,APPAREL,M,Navy,1444.00,2626.00,2626.00,12,2000000000312
+Designer Party Kurta Set,Kurtis,Mansi Ethnic,6204,APPAREL,L,Navy,1444.00,2626.00,2626.00,2,2000000000329
+Designer Party Kurta Set,Kurtis,Mansi Ethnic,6204,APPAREL,XL,Navy,1444.00,2626.00,2626.00,4,2000000000336
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,M,Yellow,1259.00,1799.00,1799.00,15,2000000000343
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,M,Sky Blue,1259.00,1799.00,1799.00,12,2000000000350
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,L,Yellow,1259.00,1799.00,1799.00,8,2000000000367
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,L,Sky Blue,1259.00,1799.00,1799.00,12,2000000000374
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,XL,Yellow,1259.00,1799.00,1799.00,0,2000000000381
+Cotton Salwar Suit Set,Salwar Suits,Rangoli,6204,APPAREL,XL,Sky Blue,1259.00,1799.00,1799.00,15,2000000000398
+Unstitched Suit Material,Salwar Suits,Rangoli,5208,FABRIC,Free,Pink,1099.00,1999.00,1999.00,1,2000000000404
+Unstitched Suit Material,Salwar Suits,Rangoli,5208,FABRIC,Free,Blue,1099.00,1999.00,1999.00,5,2000000000411
+Cotton Saree,Sarees,Jaipur Weaves,5208,FABRIC,Free,Red,875.00,1250.00,1250.00,4,2000000000428
+Cotton Saree,Sarees,Jaipur Weaves,5208,FABRIC,Free,Green,875.00,1250.00,1250.00,12,2000000000435
+Banarasi Silk Saree,Sarees,Kashi Silks,5007,FABRIC,Free,Red,2080.00,3200.00,3200.00,5,2000000000442
+Banarasi Silk Saree,Sarees,Kashi Silks,5007,FABRIC,Free,Magenta,2080.00,3200.00,3200.00,15,2000000000459
+Georgette Printed Saree,Sarees,Jaipur Weaves,5407,FABRIC,Free,Black,798.00,1450.00,1450.00,15,2000000000466
+Georgette Printed Saree,Sarees,Jaipur Weaves,5407,FABRIC,Free,Teal,798.00,1450.00,1450.00,15,2000000000473
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,S,Red,4549.00,6499.00,6499.00,2,2000000000480
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,S,Pink,4549.00,6499.00,6499.00,12,2000000000497
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,M,Red,4549.00,6499.00,6499.00,8,2000000000503
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,M,Pink,4549.00,6499.00,6499.00,15,2000000000510
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,L,Red,4549.00,6499.00,6499.00,12,2000000000527
+Bridal Lehenga Choli,Lehengas,Shubh Vivah,6204,APPAREL,L,Pink,4549.00,6499.00,6499.00,12,2000000000534
+Ready-to-Wear Lehenga,Lehengas,Shubh Vivah,6204,APPAREL,S,Lavender,1770.00,2950.00,2950.00,8,2000000000541
+Ready-to-Wear Lehenga,Lehengas,Shubh Vivah,6204,APPAREL,M,Lavender,1770.00,2950.00,2950.00,8,2000000000558
+Ready-to-Wear Lehenga,Lehengas,Shubh Vivah,6204,APPAREL,L,Lavender,1770.00,2950.00,2950.00,1,2000000000565
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,M,Black,209.00,299.00,399.00,0,2000000000572
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,M,White,209.00,299.00,399.00,15,2000000000589
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,M,Beige,209.00,299.00,399.00,15,2000000000596
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,L,Black,209.00,299.00,399.00,10,2000000000602
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,L,White,209.00,299.00,399.00,6,2000000000619
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,L,Beige,209.00,299.00,399.00,8,2000000000626
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XL,Black,209.00,299.00,399.00,15,2000000000633
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XL,White,209.00,299.00,399.00,2,2000000000640
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XL,Beige,209.00,299.00,399.00,15,2000000000657
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XXL,Black,209.00,299.00,399.00,12,2000000000664
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XXL,White,209.00,299.00,399.00,3,2000000000671
+Cotton Leggings,Bottoms,Comfort Fit,6104,APPAREL,XXL,Beige,209.00,299.00,399.00,8,2000000000688
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,M,Black,357.00,549.00,699.00,8,2000000000695
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,M,Cream,357.00,549.00,699.00,15,2000000000701
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,L,Black,357.00,549.00,699.00,5,2000000000718
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,L,Cream,357.00,549.00,699.00,2,2000000000725
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,XL,Black,357.00,549.00,699.00,15,2000000000732
+Palazzo Pants,Bottoms,Comfort Fit,6204,APPAREL,XL,Cream,357.00,549.00,699.00,4,2000000000749
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,S,White,324.00,499.00,499.00,10,2000000000756
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,S,Peach,324.00,499.00,499.00,0,2000000000763
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,M,White,324.00,499.00,499.00,4,2000000000770
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,M,Peach,324.00,499.00,499.00,6,2000000000787
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,L,White,324.00,499.00,499.00,12,2000000000794
+Women Casual Top,Tops,Urban Girl,6106,APPAREL,L,Peach,324.00,499.00,499.00,1,2000000000800
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,34,Gold,384.00,699.00,699.00,4,2000000000817
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,34,Maroon,384.00,699.00,699.00,3,2000000000824
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,36,Gold,384.00,699.00,699.00,15,2000000000831
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,36,Maroon,384.00,699.00,699.00,4,2000000000848
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,38,Gold,384.00,699.00,699.00,6,2000000000855
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,38,Maroon,384.00,699.00,699.00,6,2000000000862
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,40,Gold,384.00,699.00,699.00,4,2000000000879
+Embroidered Blouse,Blouses,Rangoli,6206,APPAREL,40,Maroon,384.00,699.00,699.00,1,2000000000886
+Printed Dupatta,Dupattas & Shawls,Rangoli,6214,APPAREL,Free,Multi,247.00,399.00,399.00,10,2000000000893
+Printed Dupatta,Dupattas & Shawls,Rangoli,6214,APPAREL,Free,Pink,247.00,399.00,399.00,5,2000000000909
+Woollen Shawl,Dupattas & Shawls,Himachal Wool,6214,APPAREL,Free,Grey,909.00,1299.00,1699.00,15,2000000000916
+Woollen Shawl,Dupattas & Shawls,Himachal Wool,6214,APPAREL,Free,Brown,909.00,1299.00,1699.00,5,2000000000923
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,M,Pink,422.00,649.00,649.00,5,2000000000930
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,M,Blue,422.00,649.00,649.00,8,2000000000947
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,L,Pink,422.00,649.00,649.00,0,2000000000954
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,L,Blue,422.00,649.00,649.00,1,2000000000961
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,XL,Pink,422.00,649.00,649.00,12,2000000000978
+Women Nightsuit,Nightwear,Comfort Fit,6108,APPAREL,XL,Blue,422.00,649.00,649.00,5,2000000000985
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,M,Maroon,629.00,899.00,899.00,8,2000000000992
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,M,Grey,629.00,899.00,899.00,12,2000000001005
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,L,Maroon,629.00,899.00,899.00,12,2000000001012
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,L,Grey,629.00,899.00,899.00,5,2000000001029
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,XL,Maroon,629.00,899.00,899.00,6,2000000001036
+Ladies Cardigan,Winterwear,Himachal Wool,6110,APPAREL,XL,Grey,629.00,899.00,899.00,2,2000000001043
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,38,White,649.00,999.00,1099.00,4,2000000001050
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,38,Light Blue,649.00,999.00,1099.00,3,2000000001067
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,40,White,649.00,999.00,1099.00,10,2000000001074
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,40,Light Blue,649.00,999.00,1099.00,10,2000000001081
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,42,White,649.00,999.00,1099.00,3,2000000001098
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,42,Light Blue,649.00,999.00,1099.00,3,2000000001104
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,44,White,649.00,999.00,1099.00,15,2000000001111
+Formal Cotton Shirt,Shirts,Raj Tailors,6205,APPAREL,44,Light Blue,649.00,999.00,1099.00,2,2000000001128
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,M,Red Check,519.00,799.00,799.00,10,2000000001135
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,M,Blue Check,519.00,799.00,799.00,0,2000000001142
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,L,Red Check,519.00,799.00,799.00,4,2000000001159
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,L,Blue Check,519.00,799.00,799.00,15,2000000001166
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,XL,Red Check,519.00,799.00,799.00,15,2000000001173
+Checked Casual Shirt,Shirts,Urban Man,6205,APPAREL,XL,Blue Check,519.00,799.00,799.00,5,2000000001180
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,M,Beige,959.00,1599.00,1999.00,12,2000000001197
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,M,Olive,959.00,1599.00,1999.00,2,2000000001203
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,L,Beige,959.00,1599.00,1999.00,15,2000000001210
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,L,Olive,959.00,1599.00,1999.00,6,2000000001227
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,XL,Beige,959.00,1599.00,1999.00,4,2000000001234
+Linen Shirt,Shirts,Raj Tailors,6205,APPAREL,XL,Olive,959.00,1599.00,1999.00,12,2000000001241
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,S,Black,209.00,349.00,499.00,3,2000000001258
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,S,White,209.00,349.00,499.00,3,2000000001265
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,S,Navy,209.00,349.00,499.00,15,2000000001272
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,M,Black,209.00,349.00,499.00,1,2000000001289
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,M,White,209.00,349.00,499.00,15,2000000001296
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,M,Navy,209.00,349.00,499.00,3,2000000001302
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,L,Black,209.00,349.00,499.00,5,2000000001319
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,L,White,209.00,349.00,499.00,6,2000000001326
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,L,Navy,209.00,349.00,499.00,0,2000000001333
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,XL,Black,209.00,349.00,499.00,5,2000000001340
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,XL,White,209.00,349.00,499.00,5,2000000001357
+Round Neck T-Shirt,T-Shirts,Urban Man,6109,APPAREL,XL,Navy,209.00,349.00,499.00,1,2000000001364
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,M,Navy,389.00,599.00,599.00,12,2000000001371
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,M,Maroon,389.00,599.00,599.00,4,2000000001388
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,L,Navy,389.00,599.00,599.00,12,2000000001395
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,L,Maroon,389.00,599.00,599.00,8,2000000001401
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,XL,Navy,389.00,599.00,599.00,5,2000000001418
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,XL,Maroon,389.00,599.00,599.00,10,2000000001425
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,XXL,Navy,389.00,599.00,599.00,5,2000000001432
+Polo T-Shirt,T-Shirts,Urban Man,6105,APPAREL,XXL,Maroon,389.00,599.00,599.00,2,2000000001449
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,30,Dark Blue,844.00,1299.00,1299.00,8,2000000001456
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,30,Black,844.00,1299.00,1299.00,15,2000000001463
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,32,Dark Blue,844.00,1299.00,1299.00,5,2000000001470
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,32,Black,844.00,1299.00,1299.00,10,2000000001487
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,34,Dark Blue,844.00,1299.00,1299.00,15,2000000001494
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,34,Black,844.00,1299.00,1299.00,15,2000000001500
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,36,Dark Blue,844.00,1299.00,1299.00,4,2000000001517
+Slim Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,36,Black,844.00,1299.00,1299.00,0,2000000001524
+Regular Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,32,Light Blue,699.00,999.00,999.00,8,2000000001531
+Regular Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,34,Light Blue,699.00,999.00,999.00,4,2000000001548
+Regular Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,36,Light Blue,699.00,999.00,999.00,6,2000000001555
+Regular Fit Jeans,Jeans & Trousers,Denim Co,6203,APPAREL,38,Light Blue,699.00,999.00,999.00,6,2000000001562
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,30,Black,714.00,1099.00,1299.00,10,2000000001579
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,30,Grey,714.00,1099.00,1299.00,12,2000000001586
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,32,Black,714.00,1099.00,1299.00,5,2000000001593
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,32,Grey,714.00,1099.00,1299.00,1,2000000001609
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,34,Black,714.00,1099.00,1299.00,10,2000000001616
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,34,Grey,714.00,1099.00,1299.00,5,2000000001623
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,36,Black,714.00,1099.00,1299.00,10,2000000001630
+Formal Trousers,Jeans & Trousers,Raj Tailors,6203,APPAREL,36,Grey,714.00,1099.00,1299.00,6,2000000001647
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,White,743.00,1199.00,1499.00,6,2000000001654
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,Cream,743.00,1199.00,1499.00,8,2000000001661
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,White,743.00,1199.00,1499.00,8,2000000001678
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,Cream,743.00,1199.00,1499.00,1,2000000001685
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,White,743.00,1199.00,1499.00,4,2000000001692
+Cotton Kurta Pyjama Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,Cream,743.00,1199.00,1499.00,8,2000000001708
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,Gold,1499.00,2499.00,2999.00,0,2000000001715
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,Maroon,1499.00,2499.00,2999.00,4,2000000001722
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,Gold,1499.00,2499.00,2999.00,3,2000000001739
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,Maroon,1499.00,2499.00,2999.00,10,2000000001746
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,Gold,1499.00,2499.00,2999.00,5,2000000001753
+Silk Festive Kurta Set,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,Maroon,1499.00,2499.00,2999.00,1,2000000001760
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,38,Ivory,4959.00,7999.00,7999.00,4,2000000001777
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,38,Gold,4959.00,7999.00,7999.00,8,2000000001784
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,40,Ivory,4959.00,7999.00,7999.00,10,2000000001791
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,40,Gold,4959.00,7999.00,7999.00,5,2000000001807
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,42,Ivory,4959.00,7999.00,7999.00,8,2000000001814
+Wedding Sherwani,Ethnic Wear,Shubh Vivah,6203,APPAREL,42,Gold,4959.00,7999.00,7999.00,8,2000000001821
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,Black,1177.00,1899.00,2299.00,12,2000000001838
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,M,Navy,1177.00,1899.00,2299.00,1,2000000001845
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,Black,1177.00,1899.00,2299.00,3,2000000001852
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,L,Navy,1177.00,1899.00,2299.00,4,2000000001869
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,Black,1177.00,1899.00,2299.00,6,2000000001876
+Nehru Jacket,Ethnic Wear,Mansi Ethnic,6203,APPAREL,XL,Navy,1177.00,1899.00,2299.00,3,2000000001883
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,38,Navy,2195.00,3540.00,3540.00,4,2000000001890
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,38,Charcoal,2195.00,3540.00,3540.00,0,2000000001906
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,40,Navy,2195.00,3540.00,3540.00,4,2000000001913
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,40,Charcoal,2195.00,3540.00,3540.00,2,2000000001920
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,42,Navy,2195.00,3540.00,3540.00,10,2000000001937
+Men Blazer,Formal Wear,Raj Tailors,6203,APPAREL,42,Charcoal,2195.00,3540.00,3540.00,15,2000000001944
+Track Pants,Sportswear,Active Life,6103,APPAREL,M,Black,349.00,499.00,499.00,3,2000000001951
+Track Pants,Sportswear,Active Life,6103,APPAREL,M,Grey,349.00,499.00,499.00,12,2000000001968
+Track Pants,Sportswear,Active Life,6103,APPAREL,L,Black,349.00,499.00,499.00,10,2000000001975
+Track Pants,Sportswear,Active Life,6103,APPAREL,L,Grey,349.00,499.00,499.00,6,2000000001982
+Track Pants,Sportswear,Active Life,6103,APPAREL,XL,Black,349.00,499.00,499.00,15,2000000001999
+Track Pants,Sportswear,Active Life,6103,APPAREL,XL,Grey,349.00,499.00,499.00,2,2000000002002
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,M,Black,549.00,999.00,999.00,10,2000000002019
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,M,Grey,549.00,999.00,999.00,8,2000000002026
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,L,Black,549.00,999.00,999.00,12,2000000002033
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,L,Grey,549.00,999.00,999.00,8,2000000002040
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,XL,Black,549.00,999.00,999.00,10,2000000002057
+Men Hoodie,Winterwear,Active Life,6110,APPAREL,XL,Grey,549.00,999.00,999.00,3,2000000002064
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,M,Navy,779.00,1199.00,1199.00,3,2000000002071
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,M,Brown,779.00,1199.00,1199.00,2,2000000002088
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,L,Navy,779.00,1199.00,1199.00,0,2000000002095
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,L,Brown,779.00,1199.00,1199.00,10,2000000002101
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,XL,Navy,779.00,1199.00,1199.00,8,2000000002118
+Woollen Sweater,Winterwear,Himachal Wool,6110,APPAREL,XL,Brown,779.00,1199.00,1199.00,4,2000000002125
+Cotton Vest,Innerwear,Comfort Fit,6109,APPAREL,80,White,92.00,149.00,199.00,3,2000000002132
+Cotton Vest,Innerwear,Comfort Fit,6109,APPAREL,85,White,92.00,149.00,199.00,10,2000000002149
+Cotton Vest,Innerwear,Comfort Fit,6109,APPAREL,90,White,92.00,149.00,199.00,6,2000000002156
+Cotton Vest,Innerwear,Comfort Fit,6109,APPAREL,95,White,92.00,149.00,199.00,1,2000000002163
+Boxer Shorts,Innerwear,Comfort Fit,6107,APPAREL,M,Assorted,109.00,199.00,199.00,5,2000000002170
+Boxer Shorts,Innerwear,Comfort Fit,6107,APPAREL,L,Assorted,109.00,199.00,199.00,4,2000000002187
+Boxer Shorts,Innerwear,Comfort Fit,6107,APPAREL,XL,Assorted,109.00,199.00,199.00,4,2000000002194
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,2-3Y,Pink,495.00,799.00,999.00,8,2000000002200
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,2-3Y,Purple,495.00,799.00,999.00,3,2000000002217
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,4-5Y,Pink,495.00,799.00,999.00,12,2000000002224
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,4-5Y,Purple,495.00,799.00,999.00,5,2000000002231
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,6-7Y,Pink,495.00,799.00,999.00,2,2000000002248
+Girls Party Frock,Girls Wear,Little Star,6204,APPAREL,6-7Y,Purple,495.00,799.00,999.00,12,2000000002255
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,2-3Y,Yellow,269.00,449.00,449.00,12,2000000002262
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,2-3Y,Peach,269.00,449.00,449.00,6,2000000002279
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,4-5Y,Yellow,269.00,449.00,449.00,0,2000000002286
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,4-5Y,Peach,269.00,449.00,449.00,5,2000000002293
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,6-7Y,Yellow,269.00,449.00,449.00,5,2000000002309
+Girls Cotton Frock,Girls Wear,Little Star,6204,APPAREL,6-7Y,Peach,269.00,449.00,449.00,3,2000000002316
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,4-5Y,Red,909.00,1299.00,1299.00,2,2000000002323
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,4-5Y,Pink,909.00,1299.00,1299.00,8,2000000002330
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,6-7Y,Red,909.00,1299.00,1299.00,5,2000000002347
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,6-7Y,Pink,909.00,1299.00,1299.00,6,2000000002354
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,8-9Y,Red,909.00,1299.00,1299.00,3,2000000002361
+Kids Lehenga Choli,Girls Wear,Little Star,6204,APPAREL,8-9Y,Pink,909.00,1299.00,1299.00,3,2000000002378
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,2-3Y,Blue,324.00,499.00,599.00,8,2000000002385
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,2-3Y,Green,324.00,499.00,599.00,10,2000000002392
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,4-5Y,Blue,324.00,499.00,599.00,1,2000000002408
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,4-5Y,Green,324.00,499.00,599.00,4,2000000002415
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,6-7Y,Blue,324.00,499.00,599.00,5,2000000002422
+Boys T-Shirt and Shorts Set,Boys Wear,Little Star,6103,APPAREL,6-7Y,Green,324.00,499.00,599.00,3,2000000002439
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,2-3Y,Yellow,489.00,699.00,699.00,8,2000000002446
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,2-3Y,White,489.00,699.00,699.00,10,2000000002453
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,4-5Y,Yellow,489.00,699.00,699.00,10,2000000002460
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,4-5Y,White,489.00,699.00,699.00,0,2000000002477
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,6-7Y,Yellow,489.00,699.00,699.00,1,2000000002484
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,6-7Y,White,489.00,699.00,699.00,3,2000000002491
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,8-9Y,Yellow,489.00,699.00,699.00,6,2000000002507
+Boys Kurta Pyjama,Boys Wear,Little Star,6203,APPAREL,8-9Y,White,489.00,699.00,699.00,15,2000000002514
+Kids Jeans,Boys Wear,Denim Co,6203,APPAREL,4-5Y,Blue,419.00,599.00,699.00,5,2000000002521
+Kids Jeans,Boys Wear,Denim Co,6203,APPAREL,6-7Y,Blue,419.00,599.00,699.00,12,2000000002538
+Kids Jeans,Boys Wear,Denim Co,6203,APPAREL,8-9Y,Blue,419.00,599.00,699.00,10,2000000002545
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,0-3M,White,209.00,349.00,349.00,8,2000000002552
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,0-3M,Sky Blue,209.00,349.00,349.00,2,2000000002569
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,3-6M,White,209.00,349.00,349.00,6,2000000002576
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,3-6M,Sky Blue,209.00,349.00,349.00,10,2000000002583
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,6-12M,White,209.00,349.00,349.00,10,2000000002590
+Baby Romper,Infant Wear,Little Star,6111,APPAREL,6-12M,Sky Blue,209.00,349.00,349.00,15,2000000002606
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,4-5Y,Red,769.00,1099.00,1099.00,15,2000000002613
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,4-5Y,Navy,769.00,1099.00,1099.00,8,2000000002620
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,6-7Y,Red,769.00,1099.00,1099.00,6,2000000002637
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,6-7Y,Navy,769.00,1099.00,1099.00,1,2000000002644
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,8-9Y,Red,769.00,1099.00,1099.00,12,2000000002651
+Kids Winter Jacket,Winterwear,Little Star,6201,APPAREL,8-9Y,Navy,769.00,1099.00,1099.00,0,2000000002668
+Cotton Handkerchief Pack of 3,Accessories,Comfort Fit,6213,APPAREL,Free,White,61.00,99.00,199.00,12,2000000002675
+Cotton Socks Pair,Accessories,Comfort Fit,6115,APPAREL,Free,Black,47.00,79.00,79.00,4,2000000002682
+Cotton Socks Pair,Accessories,Comfort Fit,6115,APPAREL,Free,Grey,47.00,79.00,79.00,8,2000000002699
+Cotton Petticoat,Innerwear,Comfort Fit,6208,APPAREL,Free,Black,154.00,249.00,249.00,5,2000000002705
+Cotton Petticoat,Innerwear,Comfort Fit,6208,APPAREL,Free,Red,154.00,249.00,249.00,4,2000000002712
+Cotton Petticoat,Innerwear,Comfort Fit,6208,APPAREL,Free,Cream,154.00,249.00,249.00,1,2000000002729
+Woollen Stole,Dupattas & Shawls,Himachal Wool,6214,APPAREL,Free,Beige,384.00,549.00,549.00,8,2000000002736
+Woollen Stole,Dupattas & Shawls,Himachal Wool,6214,APPAREL,Free,Grey,384.00,549.00,549.00,3,2000000002743

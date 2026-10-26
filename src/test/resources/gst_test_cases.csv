@@ -1,0 +1,12 @@
+test_id,item,tax_class,tag_price,unit_discount,net_price,expected_rate_%,expected_taxable,expected_cgst,expected_sgst,why
+TC-BIL-001,Floral Cotton Kurti,APPAREL,1050.00,0.00,1050.00,5,1000.00,25.00,25.00,"Well under ₹2,500 taxable"
+TC-BIL-002,Anarkali Kurta with Dupatta,APPAREL,2625.00,0.00,2625.00,5,2500.00,62.50,62.50,"Taxable exactly ₹2,500.00 → still 5%"
+TC-BIL-003,(manual price) Kurta,APPAREL,2625.01,0.00,2625.01,18,2224.58,200.22,200.21,"Taxable ₹2,500.01 → crosses into 18%"
+TC-BIL-004,Designer Party Kurta Set,APPAREL,2626.00,0.00,2626.00,18,2225.42,200.29,200.29,Just above the band start → 18%; also shows WARN-GST-001
+TC-BIL-005,Ready-to-Wear Lehenga,APPAREL,2950.00,0.00,2950.00,18,2500.00,225.00,225.00,Edge of slab-sensitive band: rule tests 5% first (2950/1.05 > 2500) → 18%; WARN-GST-001 asks owner to review price
+TC-BIL-006,Men Blazer,APPAREL,3540.00,0.00,3540.00,18,3000.00,270.00,270.00,Clearly above → 18%
+TC-BIL-007,Wedding Sherwani,APPAREL,7999.00,0.00,7999.00,18,6778.81,610.10,610.09,High-value garment → 18%
+TC-BIL-008,Banarasi Silk Saree,FABRIC,3200.00,0.00,3200.00,5,3047.62,76.19,76.19,Saree = fabric → 5% at ANY price
+TC-BIL-009,Unstitched Suit Material,FABRIC,1999.00,0.00,1999.00,5,1903.81,47.60,47.59,Suit length = fabric → 5%
+TC-BIL-010,Men Blazer,APPAREL,3540.00,1000.00,2540.00,5,2419.05,60.48,60.47,"₹1,000 discount → net ₹2,540 → slab re-tested on discounted value → 5%"
+TC-BIL-011,Silk Festive Kurta Set,APPAREL,2499.00,0.00,2499.00,5,2380.00,59.50,59.50,Just below boundary → 5%

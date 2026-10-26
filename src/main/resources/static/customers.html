@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Customers – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <div class="row between">
+    <h1 style="margin:0">Customers</h1>
+    <button class="primary" id="addBtn">+ Register customer</button>
+  </div>
+  <div class="msg warn small">The 30 seed customers are <b>dummy records with random numbers</b>. They are not opted in, so the app will never message them. Use only the team test customers for WhatsApp.</div>
+  <div class="card row">
+    <input type="search" id="q" placeholder="Search name, mobile or area" class="grow" style="width:auto">
+    <label class="checkbox"><input type="checkbox" id="optOnly"> WhatsApp opted-in only</label>
+  </div>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) 380px;align-items:start" id="layout">
+    <div class="card table-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Mobile</th><th>Area</th><th class="num">Visits</th><th class="num">Total spend</th><th>Last visit</th><th class="num">Points</th><th>WhatsApp</th></tr></thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+    <div class="card hidden" id="detail"></div>
+  </div>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  const METHODS = { IN_STORE_VERBAL: 'Said yes at the counter', SIGNED_FORM: 'Signed form', QR_SCAN: 'Scanned shop QR', WHATSAPP_REPLY: 'Replied on WhatsApp' };
+  const methodOptions = Object.entries(METHODS).filter(([k]) => k !== 'WHATSAPP_REPLY').map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+
+  requireLogin().then(() => {
+    $('q').addEventListener('input', debounce(load, 250));
+    $('optOnly').onchange = load;
+    $('addBtn').onclick = () => register();
+    if (window.innerWidth < 900) $('layout').style.gridTemplateColumns = '1fr';
+    load();
+  });
+
+  async function load() {
+    const q = $('q').value.trim();
+    let rows = await api('/customers' + (q ? '?q=' + encodeURIComponent(q) : ''));
+    if ($('optOnly').checked) rows = rows.filter(r => r.wa_opt_in);
+    $('body').innerHTML = rows.map(c => `<tr class="clickable" data-id="${c.customer_id}">
+      <td><b>${esc(c.name)}</b></td><td>${esc(c.mobile)}</td><td>${esc(c.area || '')}</td>
+      <td class="num">${c.visits}</td><td class="num">${rs0(c.total_spend)}</td><td>${c.last_visit ? fmtDate(c.last_visit) : '<span class="muted">—</span>'}</td>
+      <td class="num">${c.loyalty_points}</td>
+      <td>${c.wa_opt_in ? '<span class="badge ok">Opted in</span>' : '<span class="badge grey">No</span>'}</td></tr>`).join('')
+      || '<tr><td colspan="8" class="muted">No customers found</td></tr>';
+    $('body').querySelectorAll('[data-id]').forEach(r => r.onclick = () => show(r.dataset.id));
+  }
+
+  async function show(id) {
+    const c = await api('/customers/' + id);
+    const hist = await api('/customers/' + id + '/history');
+    const d = $('detail');
+    d.classList.remove('hidden');
+    d.innerHTML = `<div class="row between"><h2 style="margin:0">${esc(c.name)}</h2><button class="small" id="edit">Edit</button></div>
+      <div class="muted">${esc(c.mobile)} ${c.area ? '· ' + esc(c.area) : ''}</div>
+      <div class="row small" style="margin:.6rem 0">
+        <span class="badge brand">${c.loyaltyPoints} points</span>
+        ${Number(c.creditLimit) > 0 || Number(c.creditDue) > 0 ? `<span class="badge ${Number(c.creditDue) > Number(c.creditLimit) ? 'err' : 'info'}">Credit due ${rs0(c.creditDue)} / limit ${rs0(c.creditLimit)}</span>` : ''}
+        ${c.birthday ? '<span class="badge grey">🎂 ' + fmtDate(c.birthday) + '</span>' : ''}
+      </div>
+      <h3>WhatsApp consent</h3>
+      ${c.waOptIn
+        ? `<div class="msg ok small">Opted in – ${esc(METHODS[c.consentMethod] || c.consentMethod)} on ${fmtDateTime(c.consentAt)}</div>
+           <button class="small danger" id="optOut" style="margin-top:.4rem">Withdraw consent</button>`
+        : `<div class="msg info small">Not opted in. No bills or offers will be sent.${c.consentAt ? ' (changed ' + fmtDateTime(c.consentAt) + ')' : ''}</div>
+           <div class="row" style="margin-top:.4rem"><select id="method" style="width:auto">${methodOptions}</select><button class="small" id="optIn">Record consent</button></div>`}
+      <div id="cErr" style="margin-top:.4rem"></div>
+      <h3 style="margin-top:1rem">Purchase history</h3>
+      <table><tbody>${hist.map(h => `<tr class="clickable" data-sale="${h.sale_id}"><td style="white-space:nowrap"><b>${esc(h.invoice_no)}</b><div class="small muted">${fmtDate(h.completed_at)}
+          ${h.status !== 'COMPLETED' ? '<span class="badge warn">' + esc(h.status.replace('_', ' ')) + '</span>' : ''}</div></td>
+        <td class="num">${h.items} pcs</td><td class="num">${rs0(h.grand_total)}</td></tr>`).join('')
+        || '<tr><td class="muted">No purchases yet</td></tr>'}</tbody></table>`;
+    d.querySelectorAll('[data-sale]').forEach(r => r.onclick = () => window.open('receipt.html?id=' + r.dataset.sale + '&dup=1', '_blank'));
+    d.querySelector('#edit').onclick = () => register(c);
+    const setConsent = async (optIn) => {
+      if (!optIn && !(await confirmBox(`Stop all WhatsApp messages to ${c.name}?`, 'Withdraw'))) return;
+      try {
+        await api(`/customers/${c.id}/consent`, { method: 'PUT', body: { optIn, method: optIn ? d.querySelector('#method').value : null } });
+        toast(optIn ? 'Consent recorded' : 'Consent withdrawn', 'ok');
+        show(c.id); load();
+      } catch (err) { showError(d.querySelector('#cErr'), err); }
+    };
+    const oi = d.querySelector('#optIn'), oo = d.querySelector('#optOut');
+    if (oi) oi.onclick = () => setConsent(true);
+    if (oo) oo.onclick = () => setConsent(false);
+  }
+
+  function register(c) {
+    const m = openModal(`<h2>${c ? 'Edit customer' : 'Register customer'}</h2>
+      <div class="field"><label>Name *</label><input type="text" id="fName" value="${esc(c ? c.name : '')}"></div>
+      <div class="field"><label>Mobile *</label><input type="tel" id="fMobile" maxlength="14" value="${esc(c ? c.mobile : '')}" ${c ? 'disabled' : ''}></div>
+      <div class="field"><label>Area / village</label><input type="text" id="fArea" value="${esc(c ? c.area || '' : '')}"></div>
+      <div class="grid cols-2">
+        <div class="field"><label>Birthday</label><input type="date" id="fBirthday" value="${c && c.birthday ? c.birthday : ''}"></div>
+        <div class="field"><label>Anniversary</label><input type="date" id="fAnniv" value="${c && c.anniversary ? c.anniversary : ''}"></div>
+      </div>
+      ${ME.role === 'OWNER' ? `<div class="field"><label>Credit limit ₹ (Owner)</label><input type="number" id="fCredit" min="0" value="${c ? c.creditLimit : 0}"></div>` : ''}
+      ${c ? '' : `<label class="checkbox"><input type="checkbox" id="fOpt"> Agrees to receive bills & offers on WhatsApp</label>
+        <div class="field hidden" id="fMethodBox" style="margin-top:.4rem"><label>How was consent given?</label><select id="fMethod">${methodOptions}</select></div>`}
+      <div id="fErr"></div>
+      <div class="actions"><button data-close>Cancel</button><button class="primary" id="fSave">Save</button></div>`);
+    const el = m.el;
+    const opt = el.querySelector('#fOpt');
+    if (opt) opt.onchange = () => el.querySelector('#fMethodBox').classList.toggle('hidden', !opt.checked);
+    el.querySelector('#fName').focus();
+    el.querySelector('#fSave').onclick = async () => {
+      const body = {
+        name: el.querySelector('#fName').value, mobile: el.querySelector('#fMobile').value, area: el.querySelector('#fArea').value,
+        birthday: el.querySelector('#fBirthday').value || null, anniversary: el.querySelector('#fAnniv').value || null,
+        creditLimit: el.querySelector('#fCredit') ? Number(el.querySelector('#fCredit').value || 0) : null,
+        waOptIn: opt ? opt.checked : null, consentMethod: opt && opt.checked ? el.querySelector('#fMethod').value : null,
+      };
+      try {
+        const saved = await api(c ? '/customers/' + c.id : '/customers', { method: c ? 'PUT' : 'POST', body });
+        m.close();
+        toast('Customer saved', 'ok');
+        load(); show(saved.id);
+      } catch (err) {
+        showError(el.querySelector('#fErr'), err);
+        const map = { name: 'fName', mobile: 'fMobile', birthday: 'fBirthday', area: 'fArea' };
+        if (map[err.field]) el.querySelector('#' + map[err.field]).classList.add('invalid');
+      }
+    };
+  }
+</script>
+</body>
+</html>

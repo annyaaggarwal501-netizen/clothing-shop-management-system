@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>CSMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body><script src="js/app.js"></script>
+<script>
+  api('/auth/me').then(me => location.replace(homeFor(me))).catch(() => location.replace('login.html'));
+</script></body></html>

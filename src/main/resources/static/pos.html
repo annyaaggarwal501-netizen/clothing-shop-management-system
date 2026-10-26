@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>POS Billing – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main>
+  <div class="pos">
+    <!-- LEFT: scan + cart -->
+    <section class="stack">
+      <div class="card">
+        <div class="scan-box">
+          <input type="text" id="scan" placeholder="Scan barcode or type product name / SKU, then Enter" autocomplete="off" autofocus>
+          <div id="results" class="search-results hidden"></div>
+        </div>
+        <div id="scanMsg" class="small" style="margin-top:.4rem"></div>
+        <div class="shortcuts" style="margin-top:.4rem">
+          <kbd>F2</kbd> scan box · <kbd>F4</kbd> customer · <kbd>F8</kbd> hold bill · <kbd>F9</kbd> complete sale · <kbd>↑</kbd><kbd>↓</kbd> pick search result · <kbd>Esc</kbd> close
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row between" style="margin-bottom:.5rem">
+          <h2 style="margin:0">Cart <span class="muted small" id="cartCount"></span></h2>
+          <div class="row">
+            <button class="small" id="heldBtn">Held bills <span class="badge grey" id="heldCount">0</span></button>
+            <button class="small" id="holdBtn">Hold bill (F8)</button>
+            <button class="danger small" id="clearCart">Clear cart</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="cart">
+            <thead><tr>
+              <th>Item</th><th class="num">Price</th><th class="num">Discount</th><th>Qty</th>
+              <th class="num">GST</th><th class="num">Amount</th><th></th>
+            </tr></thead>
+            <tbody id="cartBody"></tbody>
+          </table>
+        </div>
+        <div id="warnings" class="stack" style="margin-top:.6rem"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT: customer, totals, payment -->
+    <aside class="stack">
+      <div class="card">
+        <h2>Customer <span class="muted small">(optional)</span></h2>
+        <div id="custFind" class="row">
+          <input type="tel" id="custMobile" placeholder="10-digit mobile" maxlength="14" class="grow" style="width:auto">
+          <button id="custFindBtn">Find</button>
+        </div>
+        <div id="custMsg" style="margin-top:.4rem"></div>
+        <div id="custBox" class="hidden"></div>
+      </div>
+
+      <div class="card">
+        <table class="totals">
+          <tr><td>Items</td><td class="num" id="tQty">0</td></tr>
+          <tr><td>Gross (tag price)</td><td class="num" id="tSub">₹0.00</td></tr>
+          <tr><td>Discount</td><td class="num" id="tDisc">₹0.00</td></tr>
+          <tr><td>Taxable value</td><td class="num" id="tTaxable">₹0.00</td></tr>
+          <tbody id="tGst"></tbody>
+          <tr><td>Round-off</td><td class="num" id="tRound">₹0.00</td></tr>
+          <tr class="grand"><td>Total</td><td class="num" id="tGrand">₹0</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="row between" style="margin-bottom:.4rem">
+          <h2 style="margin:0">Payment</h2>
+          <button class="small" id="addPay">+ Split payment</button>
+        </div>
+        <div id="payRows"></div>
+        <div id="cashBox" class="row" style="margin-top:.3rem">
+          <label class="grow" style="margin:0">Cash received
+            <input type="number" id="cashGiven" min="0" step="1" placeholder="for change">
+          </label>
+          <div class="grow"><div class="muted small">Change to return</div><div id="change" style="font-size:1.3rem;font-weight:700">₹0</div></div>
+        </div>
+        <div id="payMsg" style="margin-top:.5rem"></div>
+        <button class="primary big" style="width:100%;margin-top:.6rem" id="completeBtn" disabled>Complete Sale (F9)</button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script src="js/app.js"></script>
+<script src="js/pos.js"></script>
+</body>
+</html>

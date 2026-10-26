@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <div class="row between">
+    <h1 style="margin:0">Today <span class="muted small" id="today"></span></h1>
+    <div class="row"><a class="btn primary" href="pos.html">New bill</a><button id="refresh">Refresh</button></div>
+  </div>
+
+  <div class="grid kpis" id="kpis"></div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h2>GST collected today</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Slab</th><th class="num">Pieces</th><th class="num">Taxable value</th><th class="num">CGST</th><th class="num">SGST</th><th class="num">Total GST</th></tr></thead>
+        <tbody id="gstBody"></tbody>
+      </table></div>
+      <h3 style="margin-top:1rem">Payment modes</h3>
+      <div id="payModes" class="row"></div>
+    </div>
+    <div class="card">
+      <h2>Sales – last 30 days</h2>
+      <div class="bars" id="bars"></div>
+      <div class="bar-labels"><span id="barFrom"></span><span id="barTo">Today</span></div>
+      <h3 style="margin-top:1rem">Top 5 sellers (30 days)</h3>
+      <table><tbody id="topBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <div class="row between"><h2 style="margin:0">Low stock <span id="lowCounts" class="small"></span></h2>
+        <a class="btn small" href="stock-in.html">Stock-in</a></div>
+      <div class="table-wrap" style="max-height:340px;overflow-y:auto;margin-top:.5rem"><table>
+        <thead><tr><th>Item</th><th>SKU</th><th class="num">Stock</th><th class="num">Reorder at</th></tr></thead>
+        <tbody id="lowBody"></tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <h2>Alerts</h2>
+      <div id="alerts" class="stack"></div>
+      <h3 style="margin-top:1rem">Recent bills</h3>
+      <table><tbody id="billsBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Sales report</h2>
+    <div class="row" style="align-items:flex-end">
+      <div><label>Period</label>
+        <select id="preset"><option value="today">Today</option><option value="week">This week</option>
+          <option value="month" selected>This month</option><option value="fy">This financial year</option><option value="custom">Custom</option></select></div>
+      <div><label>From</label><input type="date" id="from"></div>
+      <div><label>To</label><input type="date" id="to"></div>
+      <button class="primary" id="runReport">Show</button>
+      <button id="exportXlsx">Export to Excel</button>
+    </div>
+    <div id="reportMsg" style="margin-top:.6rem"></div>
+    <div id="report" style="margin-top:.8rem"></div>
+  </div>
+</main>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

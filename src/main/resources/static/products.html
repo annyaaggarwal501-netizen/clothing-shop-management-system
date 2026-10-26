@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Products – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <div class="row between">
+    <h1 style="margin:0">Products</h1>
+    <div class="row">
+      <button class="hidden" id="importBtn">Import CSV / Excel</button>
+      <a class="btn primary hidden" id="addBtn" href="product-edit.html">+ Add product</a>
+    </div>
+  </div>
+  <div class="card row">
+    <input type="search" id="q" placeholder="Search name, brand, category, SKU or barcode" class="grow" style="width:auto;min-width:240px">
+    <select id="cat" style="width:auto;min-width:200px"><option value="">All categories</option></select>
+    <span class="muted small" id="count"></span>
+  </div>
+  <div class="card table-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>Category</th><th>GST class</th><th class="num">Variants</th><th class="num">Stock</th><th class="num">Price</th><th></th></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+</main>
+<script src="js/app.js"></script>
+<script src="js/share.js"></script>
+<script src="js/import.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  requireLogin().then(async me => {
+    if (me.role === 'OWNER') {
+      $('addBtn').classList.remove('hidden');
+      $('importBtn').classList.remove('hidden');
+      $('importBtn').onclick = openImport;
+    }
+    const cats = await api('/categories');
+    $('cat').innerHTML += cats.map(c => `<option value="${c.category_id}">${esc(c.label)}</option>`).join('');
+    $('q').addEventListener('input', debounce(load, 250));
+    $('cat').onchange = load;
+    load();
+  });
+
+  async function load() {
+    const params = new URLSearchParams();
+    if ($('q').value.trim()) params.set('q', $('q').value.trim());
+    if ($('cat').value) params.set('categoryId', $('cat').value);
+    const rows = await api('/products?' + params);
+    $('count').textContent = rows.length + ' products';
+    $('body').innerHTML = rows.map(p => `<tr class="clickable" data-id="${p.product_id}">
+      <td><b>${esc(p.name)}</b><div class="small muted">${esc(p.brand || '')} · HSN ${esc(p.hsn_code)}
+        ${p.is_returnable ? '' : ' · <span class="badge grey">Non-returnable</span>'}</div></td>
+      <td>${esc(p.parent_category ? p.parent_category + ' › ' : '')}${esc(p.category)}</td>
+      <td>${p.tax_class === 'FABRIC' ? '<span class="badge info">FABRIC 5%</span>' : '<span class="badge grey">APPAREL</span>'}</td>
+      <td class="num">${p.variant_count}</td>
+      <td class="num">${p.total_stock}${p.low_variants > 0 ? ' <span class="badge warn" title="variants at or below reorder level">' + p.low_variants + ' low</span>' : ''}</td>
+      <td class="num">${p.min_price === p.max_price ? rs0(p.min_price) : rs0(p.min_price) + '–' + rs0(p.max_price)}</td>
+      <td class="num"><button class="small whatsapp" data-share="${p.product_id}">Share</button></td></tr>`).join('')
+      || '<tr><td colspan="7" class="muted">No products found</td></tr>';
+    $('body').querySelectorAll('tr[data-id]').forEach(r => r.onclick = e => {
+      if (e.target.closest('[data-share]')) return;
+      location.href = 'product-edit.html?id=' + r.dataset.id;
+    });
+    $('body').querySelectorAll('[data-share]').forEach(b => b.onclick = () => openShare(+b.dataset.share));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Receipt – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+<div class="toolbar">
+  <button class="primary" onclick="window.print()">Print / Save as PDF</button>
+  <button id="voidBtn" style="display:none;color:#c62828;border-color:#f0b4b4">Void bill</button>
+  <button onclick="window.close()">Close</button>
+</div>
+<div class="paper" id="paper">Loading…</div>
+<script src="js/app.js"></script>
+<script src="js/receipt.js"></script>
+<script>
+  (async () => {
+    try {
+      const r = await api('/sales/' + encodeURIComponent(param('id')));
+      document.title = r.invoiceNo + ' – Receipt';
+      document.getElementById('paper').innerHTML = renderReceipt(r, { duplicate: param('dup') === '1' });
+      if (param('print') === '1') setTimeout(() => window.print(), 300);
+      const me = await api('/auth/me');
+      const sameDay = r.completedAt && r.completedAt.slice(0, 10) === isoDate(new Date());
+      if (me.role === 'OWNER' && r.status === 'COMPLETED' && sameDay) {
+        const btn = document.getElementById('voidBtn');
+        btn.style.display = '';
+        btn.onclick = async () => {
+          const reason = prompt('Void bill ' + r.invoiceNo + ' (' + rs0(r.grandTotal) + ')?\nStock, loyalty points and credit will be reversed.\n\nReason:');
+          if (reason === null) return;
+          try {
+            const v = await api('/sales/' + r.saleId + '/void', { method: 'POST', body: { reason } });
+            document.getElementById('paper').innerHTML = renderReceipt(v);
+            btn.style.display = 'none';
+          } catch (err) { alert((err.code ? err.code + ' ' : '') + err.message); }
+        };
+      }
+    } catch (err) {
+      document.getElementById('paper').innerHTML = '<div class="err">' + esc(err.message) + '</div>';
+    }
+  })();
+</script>
+</body>
+</html>

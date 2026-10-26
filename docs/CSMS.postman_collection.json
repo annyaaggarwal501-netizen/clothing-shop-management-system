@@ -1,0 +1,655 @@
+{
+  "info": {
+    "name": "CSMS prototype API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Login as owner",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/auth/login",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "Postman keeps the session cookie for the next calls.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"owner\",\n  \"password\": \"Owner@123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login as staff",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/auth/login",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "login"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"staff\",\n  \"password\": \"Staff@123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Who am I",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/auth/me",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "me"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Scan barcode (Floral Cotton Kurti S/Blue)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/variants?barcode=2000000000015",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "variants"
+          ],
+          "query": [
+            {
+              "key": "barcode",
+              "value": "2000000000015"
+            }
+          ]
+        },
+        "description": "Owner sees costPrice, staff does not."
+      }
+    },
+    {
+      "name": "Search products",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/products?q=kurti",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "kurti"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Product with variants",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/products/1",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "1"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Low-stock list",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/variants/low-stock",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "variants",
+            "low-stock"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Stock-in (owner)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/purchases",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "purchases"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"supplierId\": 1,\n  \"billNo\": \"JW-101\",\n  \"billDate\": \"2026-10-26\",\n  \"lines\": [\n    {\n      \"variantId\": 1,\n      \"quantity\": 5,\n      \"unitCost\": 578\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Find customer by mobile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/customers?mobile=9688281126",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "customers"
+          ],
+          "query": [
+            {
+              "key": "mobile",
+              "value": "9688281126"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Register customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/customers",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "customers"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Person\",\n  \"mobile\": \"9999912345\",\n  \"area\": \"Kotputli\",\n  \"waOptIn\": false\n}"
+        }
+      }
+    },
+    {
+      "name": "Quote demo cart (kurti + blazer + saree)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/quote",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "quote"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lines\": [\n    {\n      \"variantId\": 1,\n      \"quantity\": 1\n    },\n    {\n      \"variantId\": 192,\n      \"quantity\": 1\n    },\n    {\n      \"variantId\": 44,\n      \"quantity\": 1\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Complete sale",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lines\": [\n    {\n      \"variantId\": 1,\n      \"quantity\": 1\n    },\n    {\n      \"variantId\": 192,\n      \"quantity\": 1\n    },\n    {\n      \"variantId\": 44,\n      \"quantity\": 1\n    }\n  ],\n  \"payments\": [\n    {\n      \"mode\": \"UPI\",\n      \"amount\": 5000,\n      \"reference\": \"UPI123\"\n    },\n    {\n      \"mode\": \"CASH\",\n      \"amount\": 2310\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Get bill",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/1",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "1"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Return lookup",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/returns/lookup?invoice=MC-2627-000001",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "returns",
+            "lookup"
+          ],
+          "query": [
+            {
+              "key": "invoice",
+              "value": "MC-2627-000001"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Return 1 piece -> credit note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/returns",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "returns"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"invoiceNo\": \"MC-2627-000001\",\n  \"lines\": [\n    {\n      \"lineId\": 1,\n      \"quantity\": 1,\n      \"defective\": false\n    }\n  ],\n  \"reason\": \"Size issue\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Sales report (owner)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/reports/sales?from=2026-10-01&to=2026-10-31",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reports",
+            "sales"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "2026-10-01"
+            },
+            {
+              "key": "to",
+              "value": "2026-10-31"
+            }
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Dashboard (owner)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/reports/dashboard",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reports",
+            "dashboard"
+          ]
+        },
+        "description": ""
+      }
+    },
+    {
+      "name": "Hold bill",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/hold",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "hold"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lines\": [\n    {\n      \"variantId\": 3,\n      \"quantity\": 1\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "List held bills",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/held",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "held"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Resume held bill 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/held/1/resume",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "held",
+            "1",
+            "resume"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Void bill 1 (owner)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/sales/1/void",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "sales",
+            "1",
+            "void"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Billed by mistake\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Import preview (choose file)",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "db/sample_import_new_products.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base}}/api/v1/products/import/preview",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "import",
+            "preview"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/v1/auth/logout",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "logout"
+          ]
+        },
+        "description": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="login-page">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <div class="shop">
+      <div class="mark">M</div>
+      <h1 style="margin:0">Mansi Collection</h1>
+      <div class="muted small">Clothing Shop Management System</div>
+    </div>
+    <div class="field">
+      <label for="username">Username</label>
+      <input type="text" id="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="password" autocomplete="current-password" required>
+        <button type="button" id="togglePw">Show</button>
+      </div>
+    </div>
+    <div id="err" class="field"></div>
+    <button class="primary big" style="width:100%" id="loginBtn">Log in</button>
+    <p class="muted small" style="margin-top:1rem;text-align:center">Demo: owner / Owner@123 · staff / Staff@123</p>
+  </form>
+</div>
+<script src="js/app.js"></script>
+<script>
+  const pw = document.getElementById('password');
+  document.getElementById('togglePw').onclick = e => {
+    pw.type = pw.type === 'password' ? 'text' : 'password';
+    e.target.textContent = pw.type === 'password' ? 'Show' : 'Hide';
+  };
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('loginBtn');
+    btn.disabled = true;
+    try {
+      const me = await api('/auth/login', { method: 'POST', body: {
+        username: document.getElementById('username').value, password: pw.value } });
+      const next = param('next');
+      location.href = next && /^[a-z-]+\.html(\?[^/]*)?$/.test(next) && !next.startsWith('login') ? next : homeFor(me);
+    } catch (err) {
+      showError(document.getElementById('err'), err);
+      pw.value = '';
+      pw.focus();
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

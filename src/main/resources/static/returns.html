@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Returns – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <h1>Returns & exchange</h1>
+  <div class="card row">
+    <input type="text" id="inv" placeholder="Invoice number, e.g. MC-2627-000001" class="grow" style="width:auto;text-transform:uppercase" autofocus>
+    <button class="primary" id="find">Find bill</button>
+  </div>
+  <div id="msg"></div>
+  <div id="bill" class="card hidden"></div>
+  <div id="result"></div>
+</main>
+<script src="js/app.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  let lookup = null;
+
+  requireLogin().then(() => {
+    $('find').onclick = find;
+    $('inv').addEventListener('keydown', e => { if (e.key === 'Enter') find(); });
+    if (param('invoice')) { $('inv').value = param('invoice'); find(); }
+  });
+
+  async function find() {
+    clearMsg($('msg')); $('result').innerHTML = '';
+    const inv = $('inv').value.trim().toUpperCase();
+    if (!inv) return;
+    try {
+      lookup = await api('/returns/lookup?invoice=' + encodeURIComponent(inv));
+      render();
+    } catch (err) {
+      $('bill').classList.add('hidden');
+      showError($('msg'), err);
+    }
+  }
+
+  function render() {
+    const b = lookup.bill;
+    const box = $('bill');
+    box.classList.remove('hidden');
+    box.innerHTML = `<div class="row between">
+        <div><h2 style="margin:0">${esc(b.invoiceNo)} <span class="badge ${b.status === 'COMPLETED' ? 'ok' : 'warn'}">${esc(b.status)}</span></h2>
+          <div class="muted small">${fmtDateTime(b.completedAt)} · ${lookup.daysSinceSale} day(s) ago · ${esc(b.customerName || 'Walk-in')} · Total ${rs0(b.grandTotal)}</div></div>
+        <a class="btn small" target="_blank" href="receipt.html?id=${b.saleId}&dup=1">View bill</a></div>
+      ${lookup.needsOwnerPin ? `<div class="msg warn" style="margin-top:.6rem"><span class="code">WARN-RET-001</span>This bill is older than the ${lookup.returnWindowDays}-day return window. The Owner PIN is needed.</div>` : ''}
+      ${!lookup.returnable ? '<div class="msg err" style="margin-top:.6rem">This bill has nothing left to return.</div>' : ''}
+      <div class="table-wrap" style="margin-top:.6rem"><table>
+        <thead><tr><th></th><th>Item</th><th class="num">Sold</th><th class="num">Returned</th><th class="num">Paid / pc</th><th class="num">Return qty</th><th>Defective</th></tr></thead>
+        <tbody>${b.lines.map(l => {
+          const left = l.quantity - l.returnedQty;
+          const can = l.returnable && left > 0 && lookup.returnable;
+          return `<tr><td><input type="checkbox" data-pick="${l.lineId}" ${can ? '' : 'disabled'}></td>
+            <td><b>${esc(l.productName)}</b> ${esc(l.size)}/${esc(l.colour)}<div class="small muted">${esc(l.sku)} · GST ${pct(l.gstRate)}</div>
+              ${!l.returnable ? '<span class="badge err">ERR-RET-003 Non-returnable</span>' : ''}</td>
+            <td class="num">${l.quantity}</td><td class="num">${l.returnedQty}</td>
+            <td class="num">${rs(Number(l.unitPrice) - Number(l.unitDiscount))}</td>
+            <td class="num"><input type="number" data-qty="${l.lineId}" min="1" max="${left}" value="${left > 0 ? 1 : 0}" style="width:70px;text-align:right" ${can ? '' : 'disabled'}></td>
+            <td><input type="checkbox" data-def="${l.lineId}" ${can ? '' : 'disabled'} title="Do not put back on the shelf"></td></tr>`;
+        }).join('')}</tbody></table></div>
+      <div class="grid cols-3" style="margin-top:.8rem">
+        <div class="field"><label>Reason *</label><select id="reason">${lookup.reasons.map(r => `<option>${esc(r)}</option>`).join('')}</select></div>
+        <div class="field"><label>Settlement</label><select id="settle"><option value="CN">Credit note (use within 90 days)</option><option value="EXCHANGE">Exchange now (credit note → new bill)</option></select></div>
+        <div class="field"><label>Refund value</label><div id="value" style="font-size:1.4rem;font-weight:700">₹0</div></div>
+      </div>
+      <div id="rErr"></div>
+      <button class="primary big" id="doReturn" ${lookup.returnable ? '' : 'disabled'}>Process return</button>`;
+    box.querySelectorAll('input').forEach(i => i.addEventListener('input', updateValue));
+    box.querySelector('#doReturn').onclick = submit;
+    updateValue();
+  }
+
+  function picked() {
+    return [...document.querySelectorAll('[data-pick]:checked')].map(c => {
+      const id = Number(c.dataset.pick);
+      return { lineId: id, quantity: Number(document.querySelector(`[data-qty="${id}"]`).value),
+               defective: document.querySelector(`[data-def="${id}"]`).checked };
+    });
+  }
+
+  function updateValue() {
+    const lines = lookup.bill.lines;
+    const v = picked().reduce((s, p) => {
+      const l = lines.find(x => x.lineId === p.lineId);
+      return s + (Number(l.unitPrice) - Number(l.unitDiscount)) * p.quantity;
+    }, 0);
+    $('value').textContent = rs(v);
+  }
+
+  async function submit() {
+    clearMsg($('rErr'));
+    const lines = picked();
+    if (!lines.length) { showError($('rErr'), { message: 'Tick at least one item to return.' }); return; }
+    let ownerPin = null;
+    if (lookup.needsOwnerPin && ME.role !== 'OWNER') {
+      ownerPin = await askOwnerPin('This bill is outside the return window.');
+      if (!ownerPin) return;
+    }
+    if (!(await confirmBox(`Return ${lines.reduce((s, l) => s + l.quantity, 0)} item(s) worth ${$('value').textContent}?`, 'Process return'))) return;
+    try {
+      const r = await api('/returns', { method: 'POST', body: {
+        invoiceNo: lookup.bill.invoiceNo, lines, reason: $('reason').value, ownerPin } });
+      const exchange = $('settle').value === 'EXCHANGE';
+      $('bill').classList.add('hidden');
+      $('result').innerHTML = `<div class="card">
+        <h2>Credit note ${esc(r.cnNo)} issued ✓</h2>
+        <div class="grid cols-3">
+          <div class="kpi"><div class="label">Amount</div><div class="value">${rs(r.amount)}</div></div>
+          <div class="kpi"><div class="label">Valid until</div><div class="value" style="font-size:1.2rem">${fmtDate(r.validTo)}</div></div>
+          <div class="kpi"><div class="label">Bill status</div><div class="value" style="font-size:1.2rem">${esc(r.saleStatus)}</div></div>
+        </div>
+        <p class="small muted">${r.piecesRestocked} piece(s) put back in stock. Loyalty points for the returned value were reversed.</p>
+        <div class="row">
+          ${exchange ? `<a class="btn primary big" href="pos.html?cn=${encodeURIComponent(r.cnNo)}">Start exchange bill →</a>` : ''}
+          <button onclick="location.href='returns.html'">New return</button>
+        </div></div>`;
+      if (exchange) toast('Scan the new items on the POS; the credit note is applied as payment', 'ok');
+    } catch (err) { showError($('rErr'), err); }
+  }
+</script>
+</body>
+</html>

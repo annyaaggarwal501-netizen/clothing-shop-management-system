@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Product – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="stack">
+  <div class="row between">
+    <h1 style="margin:0" id="title">Add product</h1>
+    <div class="row"><a class="btn" href="products.html">← Back to list</a>
+      <button class="whatsapp hidden" id="shareBtn">Share on WhatsApp</button></div>
+  </div>
+  <div id="ro" class="msg info hidden">View only – prices and products can be changed by the Owner.</div>
+
+  <div class="card">
+    <h2>1. Product details</h2>
+    <div class="grid cols-3">
+      <div class="field"><label>Product name *</label><input type="text" id="name" maxlength="100" placeholder="e.g. Floral Cotton Kurti"></div>
+      <div class="field"><label>Category *</label><select id="categoryId"></select></div>
+      <div class="field"><label>Brand</label><input type="text" id="brand" maxlength="50"></div>
+      <div class="field"><label>Fabric</label><input type="text" id="fabric" maxlength="50" placeholder="Cotton, Rayon, Silk…"></div>
+      <div class="field"><label>For</label><select id="gender"><option>WOMEN</option><option>MEN</option><option>KIDS</option><option>UNISEX</option></select></div>
+      <div class="field"><label>HSN code *</label><input type="text" id="hsnCode" maxlength="8" inputmode="numeric" placeholder="6204"></div>
+      <div class="field"><label>GST class *</label>
+        <select id="taxClass"><option value="APPAREL">APPAREL – 5% up to ₹2,500 taxable, 18% above</option>
+          <option value="FABRIC">FABRIC – sarees, suit lengths: 5% at any price</option></select>
+        <div class="small muted" id="taxHint"></div></div>
+      <div class="field"><label>&nbsp;</label><label class="checkbox"><input type="checkbox" id="returnable" checked> Returnable</label></div>
+      <div class="field"><label>&nbsp;</label><label class="checkbox"><input type="checkbox" id="active" checked> Active (shown at POS)</label></div>
+    </div>
+  </div>
+
+  <div class="card" id="gridCard">
+    <h2>2. Sizes × colours</h2>
+    <div class="grid cols-2">
+      <div class="field"><label>Sizes (comma separated)</label><input type="text" id="sizes" placeholder="S, M, L, XL"></div>
+      <div class="field"><label>Colours (comma separated)</label><input type="text" id="colours" placeholder="Blue, Pink"></div>
+    </div>
+    <div class="row edit-only" style="align-items:flex-end">
+      <div class="cost-col"><label>Cost price ₹</label><input type="number" id="dCost" min="0" step="1" style="width:120px"></div>
+      <div><label>Selling price ₹</label><input type="number" id="dSell" min="1" step="1" style="width:120px"></div>
+      <div><label>MRP ₹</label><input type="number" id="dMrp" min="1" step="1" style="width:120px"></div>
+      <div><label>Reorder at</label><input type="number" id="dReorder" min="0" value="2" style="width:90px"></div>
+      <button id="applyDefaults">Apply to new variants</button>
+    </div>
+    <h3 style="margin-top:1rem">Opening stock <span class="muted small">(new variants only – existing stock changes through Stock-in)</span></h3>
+    <div class="table-wrap"><table class="vgrid" id="vgrid"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>3. Prices per variant</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Size</th><th>Colour</th><th>SKU</th><th>Barcode</th><th class="num cost-col">Cost ₹</th><th class="num">Selling ₹</th><th class="num">MRP ₹</th><th class="num">Reorder at</th><th class="num">Stock</th></tr></thead>
+      <tbody id="vbody"></tbody>
+    </table></div>
+    <div class="edit-only" style="margin-top:.8rem">
+      <label class="checkbox"><input type="checkbox" id="clearance"> Clearance price (allow selling below cost)</label>
+      <input type="text" id="clearanceReason" class="hidden" placeholder="Reason, e.g. end of season" style="margin-top:.4rem;max-width:400px">
+    </div>
+  </div>
+
+  <div id="err"></div>
+  <div class="row edit-only"><button class="primary big" id="save">Save product</button></div>
+</main>
+<script src="js/app.js"></script>
+<script src="js/share.js"></script>
+<script src="js/product-edit.js"></script>
+</body>
+</html>

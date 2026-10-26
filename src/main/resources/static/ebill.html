@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Your e-bill – Mansi Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+<div class="toolbar">
+  <button class="primary" onclick="window.print()">Download PDF</button>
+</div>
+<div class="paper" id="paper">Loading…</div>
+<script src="js/app.js"></script>
+<script src="js/receipt.js"></script>
+<script>
+  // Public page opened from WhatsApp: no login, the signed token in the link identifies the bill.
+  (async () => {
+    try {
+      const r = await api('/public/ebill/' + encodeURIComponent(param('t') || ''));
+      document.title = r.invoiceNo + ' – ' + r.shop.name;
+      document.getElementById('paper').innerHTML = renderReceipt(r);
+    } catch (err) {
+      document.getElementById('paper').innerHTML = '<div class="err">' + esc(err.message) + '</div>';
+    }
+  })();
+</script>
+</body>
+</html>
